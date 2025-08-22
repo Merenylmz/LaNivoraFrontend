@@ -1,14 +1,14 @@
 import { Logo } from "@once-ui-system/core";
 
 const person = {
-  firstName: "Quarkend",
+  firstName: "LaNivora",
   lastName: "",
   get name() {
     return `${this.firstName} ${this.lastName}`;
   },
-  role: "Software Company",
+  role: "Parfume Company",
   avatar: "/images/quarkendLogo.jpg",
-  email: "quarkend0@gmail.com",
+  email: "nivoraofficial2025@gmail.com",
   location: "Europe/Istanbul",
   languages: ["English", "Turkish"],
 };
@@ -27,12 +27,7 @@ const newsletter = {
 
 const social = [
   {
-    name: "GitHub",
-    icon: "github",
-    link: "https://github.com/Quarkend0",
-  },
-  {
-    name: "LinkedIn",
+    name: "Facebook",
     icon: "linkedin",
     link: "https://www.linkedin.com/company/once-ui/",
   },
