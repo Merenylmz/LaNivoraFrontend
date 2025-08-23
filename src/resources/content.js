@@ -185,10 +185,10 @@ const blog = {
   description: `...`,
 };
 
-const deneme = {
-  path: "/deneme",
-  label: "denemeee",
-  title: "dasdasdasd",
+const admin = {
+  path: "/admin",
+  label: "admin",
+  title: "Control Panel",
   description: "......"
 }
 
@@ -262,4 +262,4 @@ const gallery = {
   ],
 };
 
-export { person, social, newsletter, home, about, blog, work, gallery, contact, details, deneme };
+export { person, social, newsletter, home, about, blog, work, gallery, contact, details, admin };

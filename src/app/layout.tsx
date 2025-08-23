@@ -15,6 +15,8 @@ import {
 import { Footer, Header, RouteGuard, Providers } from '@/components';
 import { baseURL, effects, fonts, style, dataStyle, home } from '@/resources';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import store from '@/store/store';
+import ReduxProvider from '@/store/ReduxProvider';
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -196,10 +198,12 @@ export default async function RootLayout({
             flex={1}
           >
             <Flex horizontal="center" fillWidth minHeight="0">
-              <RouteGuard>
-                {children}
-                <SpeedInsights />
-              </RouteGuard>
+              <ReduxProvider>
+                <RouteGuard>
+                  {children}
+                  <SpeedInsights />
+                </RouteGuard>
+              </ReduxProvider>
             </Flex>
           </Flex>
           <Footer />
