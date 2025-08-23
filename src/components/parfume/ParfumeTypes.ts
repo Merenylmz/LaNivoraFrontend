@@ -11,7 +11,10 @@ type ParfumeTypes = {
     images: Array<String>,
     star?: Boolean,
     slug: String,
-    campaignId: any
+    campaignId: {
+        description: String,
+        discount: Number
+    }
 }
 
 export default ParfumeTypes;
