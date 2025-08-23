@@ -24,10 +24,10 @@ export function Projects2({ range }: ProjectsProps) {
         priority={1 < 2}
         key={"deneme"}
         href={`work/deneme`}
-        images={["/images/projects/project-01/cover-01.jpg", "/images/projects/project-01/cover-02.jpg","/images/projects/project-01/cover-03.jpg", "/images/projects/project-01/deneme.gif"]}
-        title={`Web tasarımı, dijital dünyadaki vitrininizdir.`}
-        description={"Kullanıcıların sitenizde kalmasını, markanızla etkileşim kurmasını ve hedeflerinize ulaşmanızı sağlayan ilk izlenimi oluşturur. İyi bir tasarım, güvenilirlik ve profesyonellik mesajı verirken, kötü bir tasarım potansiyel ziyaretçileri hızla uzaklaştırabilir."}
-        content={"Kullanıcıların sitenizde kalmasını, markanızla etkileşim kurmasını ve hedeflerinize ulaşmanızı sağlayan ilk izlenimi oluşturur. İyi bir tasarım, güvenilirlik ve profesyonellik mesajı verirken, kötü bir tasarım potansiyel ziyaretçileri hızla uzaklaştırabilir."}
+        images={["/images/projects/project-01/parfume1.png", "/images/projects/project-01/parfume2.png","/images/projects/project-01/parfume3.png" ,"/images/projects/project-01/parfume4.png"]}
+        title={`Zamansız Elegansın Kokusu ile Fark Yaratın`}
+        description={"Parfüm sadece bir koku değil, bir yaşam tarzıdır. Lanivora ile tarzınızı en iyi şekilde yansıtın. Her zevke uygun, geniş bir parfüm yelpazesi sizi bekliyor. İmza kokunuzu bulmak için koleksiyonumuza göz atın. Klasikten vazgeçmeyenler için... Her döneme damgasını vuran, ikonikleşmiş parfümlerle tanışın."}
+        content={"Parfüm sadece bir koku değil, bir yaşam tarzıdır. Lanivora ile tarzınızı en iyi şekilde yansıtın. Her zevke uygun, geniş bir parfüm yelpazesi sizi bekliyor. İmza kokunuzu bulmak için koleksiyonumuza göz atın. Klasikten vazgeçmeyenler için... Her döneme damgasını vuran, ikonikleşmiş parfümlerle tanışın."}
         avatars={displayedProjects[0].metadata.team?.map((member) => ({ src: member.avatar })) || []}
         link={"/projects"}
       />

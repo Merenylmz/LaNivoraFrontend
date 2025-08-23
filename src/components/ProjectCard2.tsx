@@ -78,7 +78,7 @@ export const ProjectCard2: React.FC<ProjectCardProps> = ({
                   style={{ margin: "0", width: "fit-content" }}
                   href={link}
                 >
-                  <Text variant="body-default-s">View project</Text>
+                  <Text variant="body-default-s">Ürünlerimiz</Text>
                 </SmartLink>
               )}
             </Flex>

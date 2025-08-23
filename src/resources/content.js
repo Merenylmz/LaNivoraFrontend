@@ -1,13 +1,11 @@
-import { Logo } from "@once-ui-system/core";
-
 const person = {
   firstName: "LaNivora",
   lastName: "",
   get name() {
     return `${this.firstName} ${this.lastName}`;
   },
-  role: "Parfume Company",
-  avatar: "/images/quarkendLogo.jpg",
+  role: "Parfüm Şirketi",
+  avatar: "/images/lanivoraLogo.jpg",
   email: "nivoraofficial2025@gmail.com",
   location: "Europe/Istanbul",
   languages: ["English", "Turkish"],
@@ -28,7 +26,7 @@ const newsletter = {
 const social = [
   {
     name: "Facebook",
-    icon: "linkedin",
+    icon: "facebook",
     link: "https://www.linkedin.com/company/once-ui/",
   },
   {
@@ -49,7 +47,7 @@ const home = {
   label: "Home",
   title: `${person.name} - Home`,
   description: `This site belongs to the ${person.role} team.`,
-  headline: <>Kodu değil, geleceği yazarız.</>,
+  headline: <>En Seçkin Notalardan İlham Alan Parfümler</>,
   featured: {
     display: false,
     title: <>Recent project: <strong className="ml-4"></strong></>,
@@ -57,8 +55,8 @@ const home = {
   },
   subline: (
     <>
-      Biz Web geliştirme üzerine odaklı, Quarkend adında bir yazılım şirketiyiz.
-      <br /> Yenilikçi web çözümleriyle dijital dünyada fark yaratıyoruz. Her projede kalite ve inovasyonu birleştirerek, markanızın dijitalde parlamasını sağlıyoruz.
+      Dünyanın en nadide esansları, Lanivora'nın usta işçiliğiyle bir araya geldi. Zarafet, tutku ve lüksün harmonisi.
+      <br />  En güzel anılarınızı anımsatan, yeni anılar yaratacak bir koku. Lanivora ile sadece bir parfüm değil, hikayenizin bir sonraki bölümünü seçin.
     </>
   ),
 };
@@ -84,7 +82,8 @@ const about = {
     title: "Sunum",
     description: (
       <>
-        Lise sıralarında başlayan bir girişimcilik ruhuyla kurulan Quarkend, bugün web geliştirme alanında sağlam adımlar atmaktadır. Gelecekte mobil uygulama çözümleri ve yapay zeka teknolojileriyle hizmet yelpazemizi genişleterek, dijital dönüşümde öncü olmayı hedeflemekteyiz. Her projede kalite ve inovasyonu benimseyerek, paydaşlarımıza değer katmayı sürdüreceğiz.
+        Lanivora, sıradanlığın ötesine geçerek kokuyu bir sanata dönüştüren, lüks ve sofistike bir parfüm markasıdır. Her bir şişe, en nadide esansların ustaca harmanlanmasıyla ortaya çıkan eşsiz bir hikaye anlatır.
+        Bizim için parfüm sadece bir koku değil, karakterinizin bir yansıması ve imzanızdır. Lanivora, dünyanın dört bir yanından özenle seçilmiş, en kaliteli ve doğal notaları kullanarak duyulara hitap eden unutulmaz parfümler oluşturur.
       </>
     ),
   },
@@ -186,10 +185,17 @@ const blog = {
   description: `...`,
 };
 
+const deneme = {
+  path: "/deneme",
+  label: "denemeee",
+  title: "dasdasdasd",
+  description: "......"
+}
+
 const work = {
   path: "/work",
-  label: "Projeler",
-  title: `Projects – ${person.name}`,
+  label: "Ürünlerimiz",
+  title: `Ürünler – ${person.name}`,
   description: `Design and dev projects by ${person.name}`,
 };
 
@@ -199,6 +205,13 @@ const contact = {
   title: "Bize Erişmek İsterseniz...",
   description: `...`,
 };
+
+const details = {
+  path: "/details",
+  label: "Detay",
+  title: "Detay",
+  description: "......"
+}
 
 const gallery = {
   path: "/gallery",
@@ -249,4 +262,4 @@ const gallery = {
   ],
 };
 
-export { person, social, newsletter, home, about, blog, work, gallery, contact };
+export { person, social, newsletter, home, about, blog, work, gallery, contact, details, deneme };

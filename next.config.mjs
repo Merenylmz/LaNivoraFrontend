@@ -12,7 +12,11 @@ const nextConfig = {
   sassOptions: {
     compiler: "modern",
     silenceDeprecations: ["legacy-js-api"],
-  }
+  },
+  images: {
+    domains: ['localhost'],
+  },
+
 };
 
 export default withMDX(nextConfig);

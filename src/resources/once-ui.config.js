@@ -1,14 +1,17 @@
 import { home } from "./content";
 
 // IMPORTANT: Replace with your own domain address - it's used for SEO in meta tags and schema
-const baseURL = "https://quarkend.com";
+const baseURL = "https://lanivora.net";
 
 const routes = {
   "/": true,
   "/about": true,
-  "/projects": true,
+  "/products": true,
   "/contact": true,
   "/gallery": false,
+  "/details": true,
+  "/details/[slug]": true,
+  "/deneme": true
 };
 
 const display = {
@@ -20,7 +23,7 @@ const display = {
 // Enable password protection on selected routes
 // Set password in the .env file, refer to .env.example
 const protectedRoutes = {
-  "/work/automate-design-handovers-with-a-figma-to-code-pipeline": true,
+  "/work/automate-design-handovers-with-a-figma-to-code-pipeline": false,
 };
 
 // Import and set font for each variant

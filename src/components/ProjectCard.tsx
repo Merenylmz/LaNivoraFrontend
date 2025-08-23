@@ -8,42 +8,31 @@ import {
   Line,
   Media,
   Row,
+  SmartLink,
   Text,
 } from "@once-ui-system/core";
+import Link from "next/link";
+import ParfumeTypes from "./parfume/ParfumeTypes";
 
 interface ProjectCardProps {
-  href: string;
-  priority?: boolean;
-  images: string[];
-  title: string;
-  content: string;
-  description: string;
-  avatars: { src: string }[];
-  link: string;
-  image: string;
+  data: ParfumeTypes
 }
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({
-  href,
-  images = [],
-  title,
-  content,
-  description,
-  avatars,
-  link,
-  image,
+  data 
 }) => {
   return (
     <div style={{ width: "100%", height: "100%" }}>
+      <SmartLink href={`/details?slug=${data.slug}`} style={{ width: "100%", height: "100%" }}>
       <Card
         radius="l-4"
         direction="column"
         border="neutral-alpha-medium"
-        style={{ minHeight: 550, display: "flex", flexDirection: "column" }}
+        style={{ minHeight: 550, display: "flex", flexDirection: "column", width: "100%" }}
       >
         <Row fillWidth paddingX="20" paddingY="12" gap="8" vertical="center">
           <Avatar size="xs" src="/images/avatar.jpg" />
-          <Text variant="label-default-s">Quarkend</Text>
+          <Text variant="label-default-s">LaNivora</Text>
         </Row>
 
         <Media
@@ -53,13 +42,13 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
           aspectRatio="4 / 3"
           radius="l"
           alt="Proxima b"
-          src={image}
+          src={data.images[0] as string}
         />
 
         <Column fillWidth paddingX="20" paddingY="24" gap="8" style={{ flex: 1 }}>
-          <Text variant="body-default-xl" style={{ lineClamp: 2 }}>{title}</Text>
+          <Text variant="body-default-xl" style={{ lineClamp: 2 }}>{data.title}</Text>
           <Text onBackground="neutral-weak" variant="body-default-s" style={{ lineClamp: 3 }}>
-            {description}
+            {data.description}
           </Text>
         </Column>
 
@@ -72,13 +61,14 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
           vertical="center"
           textVariant="label-default-s"
           onBackground="neutral-medium"
-        >
+          >
           <Icon name="like" size="s" onBackground="neutral-strong" />
-          Quarkend
+          La
           <Icon name="chat" size="s" onBackground="neutral-strong" marginLeft="24" />
-          Team
+          Nivora
         </Row>
       </Card>
+      </SmartLink>
     </div>
   );
 };
