@@ -1,5 +1,6 @@
 "use client"
 
+import AdminGuard from "@/components/admin/AdminGuard";
 import {
   Button,
   Icon,
@@ -40,11 +41,9 @@ const AdminCampaignsCreate = () => {
     }
   };
 
-  useEffect(()=>{
-    !userInfo.token && router.push("/admin/")
-  }, []);
-
   return (
+    <AdminGuard>
+      <div>
     <form
       onSubmit={handleSubmit}
       style={{
@@ -97,6 +96,8 @@ const AdminCampaignsCreate = () => {
         </Row>
       </Row>
     </form>
+    </div>
+    </AdminGuard>
   );
 }
 

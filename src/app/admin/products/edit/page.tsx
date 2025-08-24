@@ -17,6 +17,7 @@ import axios from "axios";
 import { getItemsOrItem, slugify } from "@/adminActions/actions";
 import CampaignType from "@/components/campaign/CampaignTypes";
 import ParfumeTypes from "@/components/parfume/ParfumeTypes";
+import AdminGuard from "@/components/admin/AdminGuard";
 
 const AdminProductEdit = () => {
     const searchParams = useSearchParams();
@@ -83,8 +84,6 @@ const AdminProductEdit = () => {
   };
 
   useEffect(()=>{
-    !userInfo.token && router.push("/admin/")
-    console.log("Effect", userInfo);
     (async()=>{
         const campaign = await getItemsOrItem(`${process.env.NEXT_PUBLIC_API_URL}/campaign/`);
         const parfume = await getItemsOrItem(`${process.env.NEXT_PUBLIC_API_URL}/parfumes/${slug}`) as ParfumeTypes;
@@ -103,9 +102,11 @@ const AdminProductEdit = () => {
             images: parfume.images as [], // edit modunda dosya input boş başlar
         });
     })()
-  }, []);
+  }, [slug]);
 
   return (
+    <AdminGuard>
+    <div>
     <form
       onSubmit={handleSubmit}
       style={{
@@ -304,6 +305,8 @@ const AdminProductEdit = () => {
         </Row>
       </Row>
     </form>
+    </div>
+    </AdminGuard>
   );
 }
 

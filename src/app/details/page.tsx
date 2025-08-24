@@ -23,7 +23,7 @@ const Details = () => {
             const data = res.data;
             setDetail(data);
         })()
-    }, []);
+    }, [slug]);
     
     return (
         <>

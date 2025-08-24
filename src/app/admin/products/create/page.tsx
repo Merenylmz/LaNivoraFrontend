@@ -16,6 +16,8 @@ import { useRouter } from "next/navigation";
 import { FormEvent, useEffect, useLayoutEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { slugify } from "@/adminActions/actions";
+import AdminGuard from "@/components/admin/AdminGuard";
+import Image from "next/image";
 
 const AdminProductCreate = () => {
   const userInfo = useSelector((state: { auth: {} }) => state.auth) as {
@@ -76,8 +78,6 @@ const AdminProductCreate = () => {
   };
 
   useEffect(()=>{
-    !userInfo.token && router.push("/admin/")
-    console.log("Effect", userInfo);
     (async()=>{
       const campaign = await getItemsOrItem(`${process.env.NEXT_PUBLIC_API_URL}/campaign/`);
       setCampaigns(campaign);
@@ -85,214 +85,218 @@ const AdminProductCreate = () => {
   }, []);
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      style={{
-        backgroundColor: "transparent",
-        padding: 25,
-        borderRadius: 20,
-        border: "1px solid gray",
-      }}
-    >
-      <Row fillWidth gap="24" style={{ flexDirection: "column" }}>
-        <Column fillWidth>
-          <Input
-            id="aaa"
-            label="Başlık"
-            value={inputs.title}
-            onChange={(e) => {
-              const slug = slugify(e.target.value);
-              setInputs({ ...inputs, title: e.target.value , slug: slug});
-            }}
-            hasPrefix={
-              <Icon
-                marginLeft="4"
-                onBackground="neutral-weak"
-                name="list"
-                size="xs"
+    <AdminGuard>
+      <div>
+        <form
+          onSubmit={handleSubmit}
+          style={{
+            backgroundColor: "transparent",
+            padding: 25,
+            borderRadius: 20,
+            border: "1px solid gray",
+          }}
+        >
+          <Row fillWidth gap="24" style={{ flexDirection: "column" }}>
+            <Column fillWidth>
+              <Input
+                id="aaa"
+                label="Başlık"
+                value={inputs.title}
+                onChange={(e) => {
+                  const slug = slugify(e.target.value);
+                  setInputs({ ...inputs, title: e.target.value , slug: slug});
+                }}
+                hasPrefix={
+                  <Icon
+                    marginLeft="4"
+                    onBackground="neutral-weak"
+                    name="list"
+                    size="xs"
+                  />
+                }
               />
-            }
-          />
-        </Column>
+            </Column>
 
-        <Column fillWidth>
-          <Textarea
-            id="aaa"
-            label="Açıklama"
-            placeholder="Açıklamayı buraya girin"
-            lines={3}
-            value={inputs.description}
-            onChange={(e) =>
-              setInputs({ ...inputs, description: e.target.value })
-            }
-          />
-        </Column>
+            <Column fillWidth>
+              <Textarea
+                id="aaa"
+                label="Açıklama"
+                placeholder="Açıklamayı buraya girin"
+                lines={3}
+                value={inputs.description}
+                onChange={(e) =>
+                  setInputs({ ...inputs, description: e.target.value })
+                }
+              />
+            </Column>
 
-        <Row fillWidth gap="16" style={{ flexDirection: "row" }}>
-          <Column fillWidth>
-            <Input
-              id="aaa"
-              label="Marka"
-              value={inputs.brand}
-              onChange={(e) => setInputs({ ...inputs, brand: e.target.value })}
-              hasPrefix={
-                <Icon
-                  marginLeft="4"
-                  onBackground="neutral-weak"
-                  name="list"
-                  size="xs"
+            <Row fillWidth gap="16" style={{ flexDirection: "row" }}>
+              <Column fillWidth>
+                <Input
+                  id="aaa"
+                  label="Marka"
+                  value={inputs.brand}
+                  onChange={(e) => setInputs({ ...inputs, brand: e.target.value })}
+                  hasPrefix={
+                    <Icon
+                      marginLeft="4"
+                      onBackground="neutral-weak"
+                      name="list"
+                      size="xs"
+                    />
+                  }
                 />
-              }
-            />
-          </Column>
-          <Column fillWidth>
-            <Input
-              id="aaa"
-              label="Fiyat"
-              type="number"
-              value={inputs.price}
-              onChange={(e) => setInputs({ ...inputs, price: e.target.value })}
-              hasPrefix={
-                <Icon
-                  marginLeft="4"
-                  onBackground="neutral-weak"
-                  name="list"
-                  size="xs"
+              </Column>
+              <Column fillWidth>
+                <Input
+                  id="aaa"
+                  label="Fiyat"
+                  type="number"
+                  value={inputs.price}
+                  onChange={(e) => setInputs({ ...inputs, price: e.target.value })}
+                  hasPrefix={
+                    <Icon
+                      marginLeft="4"
+                      onBackground="neutral-weak"
+                      name="list"
+                      size="xs"
+                    />
+                  }
                 />
-              }
-            />
-          </Column>
-        </Row>
+              </Column>
+            </Row>
 
-        <Column fillWidth>
-          <Input
-            id="aaa"
-            label="Ek Bilgiler"
-            value={inputs.extraInfo}
-            onChange={(e) =>
-              setInputs({ ...inputs, extraInfo: e.target.value })
-            }
-            hasPrefix={
-              <Icon
-                marginLeft="4"
-                onBackground="neutral-weak"
-                name="list"
-                size="xs"
+            <Column fillWidth>
+              <Input
+                id="aaa"
+                label="Ek Bilgiler"
+                value={inputs.extraInfo}
+                onChange={(e) =>
+                  setInputs({ ...inputs, extraInfo: e.target.value })
+                }
+                hasPrefix={
+                  <Icon
+                    marginLeft="4"
+                    onBackground="neutral-weak"
+                    name="list"
+                    size="xs"
+                  />
+                }
+              />
+            </Column>
+
+            <Column fillWidth>
+              <Checkbox
+                id="aaa"
+                label="Ürün Aktif Olsun mu?"
+                description="Ürünü ilk etapta aktif etmek için işaretleyin"
+                isChecked={inputs.isActive}
+                onToggle={() => setInputs({...inputs, isActive: !inputs.isActive})}
+              />
+            </Column>
+
+            <Column fillWidth>
+              <Textarea
+                id="aaa"
+                label="Koku Notaları"
+                placeholder="Koku Tonu için Buraya girin"
+                description="Ürüne Koku Tonu Eklemek isterseniz Buraya girebilirsiniz"
+                lines={3}
+                value={inputs.notes}
+                onChange={(e) => setInputs({ ...inputs, notes: e.target.value })}
+              />
+            </Column>
+
+            <Column fillWidth>
+                <div style={{flexDirection: "row"}}>
+                  {inputs.images.map((file, i) => (
+                    <Image
+                      key={i}
+                      src={URL.createObjectURL(file)}
+                      alt={`preview-${i}`}
+                      style={{ width: 100, marginRight: 8 }}
+                    />
+                  ))}
+                </div>
+              <Input
+                id="aaa"
+                label="Resimler"
+                type="file"
+                multiple
+                hasPrefix={
+                  <Icon
+                    marginLeft="4"
+                    onBackground="neutral-weak"
+                    name="list"
+                    size="xs"
+                  />
+                }
+                onChange={(e) => {
+                  const selectedFiles = Array.from(e.target.files || []);
+                  setInputs({ ...inputs, images: selectedFiles as []})
+                }}
+              />
+            </Column>
+
+            <Column fillWidth>
+              <Checkbox
+                label="Yıldızlı bir Ürün mü?"
+                description="Yıldızlanan ürünler daha özel ürünlerdir."
+                isChecked={inputs.isFeatured}
+                onToggle={() =>setInputs({ ...inputs, isFeatured: !inputs.isFeatured })}
+              />
+            </Column>
+
+            {/* <Column fillWidth>
+              <Input
+                id="aaa"
+                label="Slug"
+                value={inputs.slug}
+                onChange={(e) => setInputs({ ...inputs, slug: e.target.value })}
+                hasPrefix={
+                  <Icon
+                    marginLeft="4"
+                    onBackground="neutral-weak"
+                    name="list"
+                    size="xs"
+                  />
+                }
+              />
+            </Column> */}
+
+            <Column fillWidth>
+            {
+              campaigns && 
+              <Select
+                id="aaa"
+                label="Kampanya Seçimi"
+                description="Ürüne Kampanya Eklemek isterseniz seçebilirsiniz"
+                value={inputs.campaign}
+                options={[
+                  { label: "Seçim Yapınız", value: "" },
+                  ...campaigns.map((c) => ({
+                    label: c.description,
+                    value: c._id as string, 
+                  })),
+
+                ]}
+                onSelect={(val) => setInputs({ ...inputs, campaign: val })}
               />
             }
-          />
-        </Column>
+            </Column>
 
-        <Column fillWidth>
-          <Checkbox
-            id="aaa"
-            label="Ürün Aktif Olsun mu?"
-            description="Ürünü ilk etapta aktif etmek için işaretleyin"
-            isChecked={inputs.isActive}
-            onToggle={() => setInputs({...inputs, isActive: !inputs.isActive})}
-          />
-        </Column>
-
-        <Column fillWidth>
-          <Textarea
-            id="aaa"
-            label="Koku Notaları"
-            placeholder="Koku Tonu için Buraya girin"
-            description="Ürüne Koku Tonu Eklemek isterseniz Buraya girebilirsiniz"
-            lines={3}
-            value={inputs.notes}
-            onChange={(e) => setInputs({ ...inputs, notes: e.target.value })}
-          />
-        </Column>
-
-        <Column fillWidth>
-            <div style={{flexDirection: "row"}}>
-              {inputs.images.map((file, i) => (
-                <img
-                  key={i}
-                  src={URL.createObjectURL(file)}
-                  alt={`preview-${i}`}
-                  style={{ width: 100, marginRight: 8 }}
-                />
-              ))}
-            </div>
-          <Input
-            id="aaa"
-            label="Resimler"
-            type="file"
-            multiple
-            hasPrefix={
-              <Icon
-                marginLeft="4"
-                onBackground="neutral-weak"
-                name="list"
-                size="xs"
-              />
-            }
-            onChange={(e) => {
-              const selectedFiles = Array.from(e.target.files || []);
-              setInputs({ ...inputs, images: selectedFiles as []})
-            }}
-          />
-        </Column>
-
-        <Column fillWidth>
-          <Checkbox
-            label="Yıldızlı bir Ürün mü?"
-            description="Yıldızlanan ürünler daha özel ürünlerdir."
-            isChecked={inputs.isFeatured}
-            onToggle={() =>setInputs({ ...inputs, isFeatured: !inputs.isFeatured })}
-          />
-        </Column>
-
-        {/* <Column fillWidth>
-          <Input
-            id="aaa"
-            label="Slug"
-            value={inputs.slug}
-            onChange={(e) => setInputs({ ...inputs, slug: e.target.value })}
-            hasPrefix={
-              <Icon
-                marginLeft="4"
-                onBackground="neutral-weak"
-                name="list"
-                size="xs"
-              />
-            }
-          />
-        </Column> */}
-
-        <Column fillWidth>
-        {
-          campaigns && 
-          <Select
-            id="aaa"
-            label="Kampanya Seçimi"
-            description="Ürüne Kampanya Eklemek isterseniz seçebilirsiniz"
-            value={inputs.campaign}
-            options={[
-              { label: "Seçim Yapınız", value: "" },
-              ...campaigns.map((c) => ({
-                label: c.description,
-                value: c._id as string, 
-              })),
-
-            ]}
-            onSelect={(val) => setInputs({ ...inputs, campaign: val })}
-          />
-        }
-        </Column>
-
-        <Row style={{ justifyContent: "flex-end", marginTop: 24 }}>
-          <Button variant="primary" type="submit">
-            Ekle
-          </Button>
-          <Button variant="primary" type="button" style={{marginLeft: 10}} onClick={()=>router.push("/admin/products")}>
-            Geri Dön
-          </Button>
-        </Row>
-      </Row>
-    </form>
+            <Row style={{ justifyContent: "flex-end", marginTop: 24 }}>
+              <Button variant="primary" type="submit">
+                Ekle
+              </Button>
+              <Button variant="primary" type="button" style={{marginLeft: 10}} onClick={()=>router.push("/admin/products")}>
+                Geri Dön
+              </Button>
+            </Row>
+          </Row>
+        </form>
+      </div>
+    </AdminGuard>
   );
 };
 

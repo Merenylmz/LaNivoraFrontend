@@ -1,5 +1,6 @@
 "use client"
 import { deleteItem } from "@/adminActions/actions";
+import AdminGuard from "@/components/admin/AdminGuard";
 import CampaignType from "@/components/campaign/CampaignTypes";
 import { Button, Column, Feedback, Row, Text } from "@once-ui-system/core";
 import axios from "axios";
@@ -30,33 +31,35 @@ const AdminCampaigns = () => {
     console.log(userInfo);
     
     return (
-        <div>
-            <Button variant="primary" fillWidth style={{marginBottom: 20}} onClick={()=>router.push("/admin/campaigns/create")}>Kampanya Ekle</Button>
-            <Button variant="primary" fillWidth style={{marginBottom: 30}} onClick={()=>router.push("/admin/products")}>Parfüm Sayfası</Button>
-            {
-                feedBack.shown && 
-                <Feedback
-                    title="Bilgi" 
-                    description="Kampanya Başarıyla Silindi"
-                    variant={feedBack.variant as "success" | "info" | "danger" | "warning"}
-                    style={{marginBottom: 20}}
-                />
-            }   
-            {
-                campaign && campaign.map((c, index)=>(
-                    <Row fillWidth fitHeight gap="160" key={index} style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between", marginBottom: 20 }}>
-                        <Column fillWidth>
-                            <Text>{c.description}</Text>
-                            <Text variant="body-default-xs">İndirim Miktarı: {c.discount as ReactNode}</Text>
-                        </Column>
-                        <Column style={{ flexDirection: "row", gap: 8 }}>
-                            <Button variant="danger" onClick={()=>deleteButtonHandler(c._id)}>Sil</Button>
-                        </Column>
-                    </Row>
-                ))
-            }
-            
-        </div>
+        <AdminGuard>
+            <div>
+                <Button variant="primary" fillWidth style={{marginBottom: 20}} onClick={()=>router.push("/admin/campaigns/create")}>Kampanya Ekle</Button>
+                <Button variant="primary" fillWidth style={{marginBottom: 30}} onClick={()=>router.push("/admin/products")}>Parfüm Sayfası</Button>
+                {
+                    feedBack.shown && 
+                    <Feedback
+                        title="Bilgi" 
+                        description="Kampanya Başarıyla Silindi"
+                        variant={feedBack.variant as "success" | "info" | "danger" | "warning"}
+                        style={{marginBottom: 20}}
+                    />
+                }   
+                {
+                    campaign && campaign.map((c, index)=>(
+                        <Row fillWidth fitHeight gap="160" key={index} style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between", marginBottom: 20 }}>
+                            <Column fillWidth>
+                                <Text>{c.description}</Text>
+                                <Text variant="body-default-xs">İndirim Miktarı: {c.discount as ReactNode}</Text>
+                            </Column>
+                            <Column style={{ flexDirection: "row", gap: 8 }}>
+                                <Button variant="danger" onClick={()=>deleteButtonHandler(c._id)}>Sil</Button>
+                            </Column>
+                        </Row>
+                    ))
+                }
+                
+            </div>
+        </AdminGuard>
     );
 }
 

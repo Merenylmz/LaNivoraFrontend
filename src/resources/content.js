@@ -55,8 +55,8 @@ const home = {
   },
   subline: (
     <>
-      Dünyanın en nadide esansları, Lanivora'nın usta işçiliğiyle bir araya geldi. Zarafet, tutku ve lüksün harmonisi.
-      <br />  En güzel anılarınızı anımsatan, yeni anılar yaratacak bir koku. Lanivora ile sadece bir parfüm değil, hikayenizin bir sonraki bölümünü seçin.
+      Dünyanın en nadide esansları, Lanivora&apos;nın usta işçiliğiyle bir araya geldi. Zarafet, tutku ve lüksün harmonisi.
+      En güzel anılarınızı anımsatan, yeni anılar yaratacak bir koku. Lanivora ile sadece bir parfüm değil, hikayenizin bir sonraki bölümünü seçin.
     </>
   ),
 };
