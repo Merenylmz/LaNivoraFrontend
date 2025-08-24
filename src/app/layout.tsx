@@ -47,32 +47,15 @@ export default async function RootLayout({
       )}
     >
       <head>
-        <meta name="keywords" content="    
-          'nextjs geliştirme',
-          'web tasarım',
-          'web geliştirme',
-          'seo uyumlu web sitesi',
-          'kurumsal web sitesi',
-          'e-ticaret sitesi',
-          'react geliştirme',
-          'full stack geliştirme',
-          'özel yazılım',
-          'mobil uyumlu web sitesi',
-          'dijital ajans',
-          'istanbul web tasarım',
-          'reklam yönetimi',
-          'web geliştirme',
-          quarkend, web geliştirme, web tasarım, web sitesi, sosyal medya yönetimi, dijital pazarlama, SEO optimizasyonu, reklam kampanyası, kurumsal site, içerik yönetimi, yazılım geliştirme, frontend tasarım, backend mimarisi, kullanıcı deneyimi, mobil uyumlu site, hızlı yüklenen site, baştan sona proje, Laravel, Next.js, MDX, performans optimizasyonu, etkileşimli arayüz, modern yazılım
-          " 
-        />
+        <meta name="keywords" content="Lanivora, parfüm, online parfüm, orijinal parfüm, parfüm satın al, lüks parfüm, niş parfüm, kadın parfümü, erkek parfümü, unisex parfüm, parfüm fiyatları, en iyi parfümler, parfüm koleksiyonu, seçkin kokular, imza koku, kalıcı parfümler, çiçeksi parfümler, baharatlı kokular, odunsu parfümler, taze kokular" />
         <meta property="og:title" content={home.title}/>
         <meta property="og:description" content={home.description}/>
         <meta property="og:type" content="website"/>
-        <meta property="og:url" content="https:/quarkend.com"/>
-        <meta property="og:site_name" content="https:/quarkend.com"/>
+        <meta property="og:url" content="https://lanivora.net"/>
+        <meta property="og:site_name" content="https://lanivora.net"/>
         <meta property="og:locale" content="tr_TR"/>
-        <meta property="og:image" content="https://www.quarkend.com/_next/image?url=%2Fimages%2FquarkendLogo.jpg"/>
-        <meta property="og:image:alt" content="Quarkend Image"/>
+        <meta property="og:image" content="https://lanivora.net/logo"/>
+        <meta property="og:image:alt" content="LaNivora Image"/>
 
         <script
           id="theme-init"

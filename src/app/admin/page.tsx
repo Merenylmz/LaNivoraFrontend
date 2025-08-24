@@ -62,7 +62,6 @@ const Admin = () => {
                     onChange={(e)=>setInputs({...inputs, password: e.target.value})}
                 />
                 <Button variant="primary" style={{width: "100%"}} type="submit">Giriş</Button>
-                <Button variant="primary"  style={{width: "100%", marginTop: 15}} type="button" onClick={()=>setInputs({email: "m.erenyilmaz2007@gmail.com", password: "eren123"})}>Kaçak Giriş</Button>
             </form>
         </div>
     );

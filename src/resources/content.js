@@ -27,12 +27,12 @@ const social = [
   {
     name: "Facebook",
     icon: "facebook",
-    link: "https://www.linkedin.com/company/once-ui/",
+    link: "https://www.facebook.com/people/Lanivora/61579440875720/#",
   },
   {
     name: "Instagram",
     icon: "instagram",
-    link: "https://www.instagram.com/quarkend0/",
+    link: "https://www.instagram.com/nivoraaofficial/",
   },
   {
     name: "Email",

@@ -31,7 +31,7 @@ export default function Work() {
       <Text variant="body-strong-xl" style={{textAlign: "center", marginBottom: "20px", marginTop: "20px"}}>
         Projelerimiz
       </Text>
-      <Projects />
+      {/* <Projects /> */}
     </Column>
   );
 }

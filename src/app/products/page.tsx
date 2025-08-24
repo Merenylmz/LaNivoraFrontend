@@ -32,9 +32,7 @@ export default function Work() {
         Ürünlerimiz
       </Text>
 
-      <Projects />
-
-      
+      <Projects range={false}/>
     </Column>
   );
 }

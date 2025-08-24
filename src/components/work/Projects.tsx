@@ -4,7 +4,7 @@ import { ProjectCard } from "@/components";
 import ParfumeCard from "../parfume/ParfumeCard";
 
 interface ProjectsProps {
-  range?: [number, number?];
+  range: Boolean;
 }
 
 export function Projects({ range }: ProjectsProps) {
@@ -14,9 +14,9 @@ export function Projects({ range }: ProjectsProps) {
     return new Date(b.metadata.publishedAt).getTime() - new Date(a.metadata.publishedAt).getTime();
   });
 
-  const displayedProjects = range
-    ? sortedProjects.slice(range[0] - 1, range[1] ?? sortedProjects.length)
-    : sortedProjects;
+  // const displayedProjects = range
+  //   ? sortedProjects.slice(range[0] - 1, range[1] ?? sortedProjects.length)
+  //   : sortedProjects;
 
   return (
     <Column fillWidth gap="16" marginBottom="40">
@@ -28,7 +28,7 @@ export function Projects({ range }: ProjectsProps) {
           width: "100%",
         }}
       >
-        <ParfumeCard />
+        <ParfumeCard range={range}/>
       </div>
     </Column>
   );

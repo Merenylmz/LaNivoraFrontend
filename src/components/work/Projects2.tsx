@@ -29,7 +29,7 @@ export function Projects2({ range }: ProjectsProps) {
         description={"Parfüm sadece bir koku değil, bir yaşam tarzıdır. Lanivora ile tarzınızı en iyi şekilde yansıtın. Her zevke uygun, geniş bir parfüm yelpazesi sizi bekliyor. İmza kokunuzu bulmak için koleksiyonumuza göz atın. Klasikten vazgeçmeyenler için... Her döneme damgasını vuran, ikonikleşmiş parfümlerle tanışın."}
         content={"Parfüm sadece bir koku değil, bir yaşam tarzıdır. Lanivora ile tarzınızı en iyi şekilde yansıtın. Her zevke uygun, geniş bir parfüm yelpazesi sizi bekliyor. İmza kokunuzu bulmak için koleksiyonumuza göz atın. Klasikten vazgeçmeyenler için... Her döneme damgasını vuran, ikonikleşmiş parfümlerle tanışın."}
         avatars={displayedProjects[0].metadata.team?.map((member) => ({ src: member.avatar })) || []}
-        link={"/projects"}
+        link={"/products"}
       />
     </Column>
   );

@@ -6,7 +6,7 @@ import { ProjectCard } from "../ProjectCard";
 import ParfumeTypes from "./ParfumeTypes";
 
 
-const ParfumeCard = () => {
+const ParfumeCard = ({range = false}: {range?: any}) => {
     const [parfumes, setParfumes] = useState<Array<ParfumeTypes>>();
     
     useEffect(()=>{
@@ -18,10 +18,15 @@ const ParfumeCard = () => {
     }, []);
     return (
         <>
+
             {
+                !range ? 
                 parfumes && parfumes.map((p:ParfumeTypes, index)=>(
                     <ProjectCard data={p} key={index}/>
-                ))
+                )) : 
+                parfumes && parfumes.slice(0, 3).map((p:ParfumeTypes, index)=>(
+                    <ProjectCard data={p} key={index}/>
+                )) 
             }
         </>
     );

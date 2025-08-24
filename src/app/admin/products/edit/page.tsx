@@ -56,16 +56,11 @@ const AdminProductEdit = () => {
       formData.append("fragranceNotes", inputs.notes);
       formData.append("slug", inputs.slug);
       formData.append("campaignId", inputs.campaign);
-      if (!inputs.images[0]) {
-        formData.append("images", inputs.images.toString());
-      } else {
+      if (inputs.images[0]) {
         inputs.images.forEach((file) => {
-            console.log("yok");
-
-            formData.append("images", file); 
+          formData.append("images", file); 
         });
-      }
-      
+      } 
       const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/parfumes/edit/${slug}?token=${userInfo.token}`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
