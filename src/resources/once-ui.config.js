@@ -12,7 +12,11 @@ const routes = {
   "/details": true,
   // "/details/[slug]": true,
   "/admin": true,
-  "/admin/products": true
+  "/admin/campaigns": true,
+  "/admin/campaigns/create": true,
+  "/admin/products": true,
+  "/admin/products/create": true,
+  "/admin/products/edit": true,
 };
 
 const display = {

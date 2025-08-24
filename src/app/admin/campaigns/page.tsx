@@ -1,29 +1,28 @@
 "use client"
-
 import { deleteItem } from "@/adminActions/actions";
-import ParfumeTypes from "@/components/parfume/ParfumeTypes";
+import CampaignType from "@/components/campaign/CampaignTypes";
 import { Button, Column, Feedback, Row, Text } from "@once-ui-system/core";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import { useLayoutEffect, useState } from "react";
+import { ReactNode, useLayoutEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
-const AdminProducts = () => {
-    const [parfumes, setParfumes] = useState<Array<ParfumeTypes>>();
+const AdminCampaigns = () => {
+    const [campaign, setCampaign] = useState<Array<CampaignType>>();
     const userInfo = useSelector((state: {auth:{}})=>state.auth) as {token: string};
     const [feedBack, setFeedBack] = useState({shown: false, variant: "success"});
     const router = useRouter();
 
     useLayoutEffect(()=>{
         (async()=>{
-            const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/parfumes/`);
+            const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/campaign/`);
             const data = res.data;
-            setParfumes(data);
+            setCampaign(data);
         })()
     }, []);
 
-    const deleteButtonHandler = async(slug: String) =>{
-        const status = await deleteItem(`${process.env.NEXT_PUBLIC_API_URL}/parfumes/delete/${slug}?token=${userInfo.token}`);
+    const deleteButtonHandler = async(id: String) =>{
+        const status = await deleteItem(`${process.env.NEXT_PUBLIC_API_URL}/campaign/delete/${id}?token=${userInfo.token}`);
         
         status ? setFeedBack({shown: true, variant: "success"}) : setFeedBack({shown: false, variant: "danger"});
     };
@@ -32,27 +31,26 @@ const AdminProducts = () => {
     
     return (
         <div>
-            <Button variant="primary" fillWidth style={{marginBottom: 20}} onClick={()=>router.push("/admin/products/create")}>Parfüm Ekle</Button>
-            <Button variant="primary" fillWidth style={{marginBottom: 30}} onClick={()=>router.push("/admin/campaigns")}>Kampanya Sayfası</Button>
+            <Button variant="primary" fillWidth style={{marginBottom: 20}} onClick={()=>router.push("/admin/campaigns/create")}>Kampanya Ekle</Button>
+            <Button variant="primary" fillWidth style={{marginBottom: 30}} onClick={()=>router.push("/admin/products")}>Parfüm Sayfası</Button>
             {
                 feedBack.shown && 
                 <Feedback
                     title="Bilgi" 
-                    description="Ürün Başarıyla Silindi"
+                    description="Kampanya Başarıyla Silindi"
                     variant={feedBack.variant as "success" | "info" | "danger" | "warning"}
                     style={{marginBottom: 20}}
                 />
             }   
             {
-                parfumes && parfumes.map((parfume, index)=>(
+                campaign && campaign.map((c, index)=>(
                     <Row fillWidth fitHeight gap="160" key={index} style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between", marginBottom: 20 }}>
                         <Column fillWidth>
-                            <Text>{parfume.title}</Text>
-                            <Text variant="body-default-xs">{parfume.description}</Text>
+                            <Text>{c.description}</Text>
+                            <Text variant="body-default-xs">İndirim Miktarı: {c.discount as ReactNode}</Text>
                         </Column>
                         <Column style={{ flexDirection: "row", gap: 8 }}>
-                            <Button variant="danger" onClick={()=>deleteButtonHandler(parfume.slug)}>Sil</Button>
-                            <Button variant="primary" onClick={()=>router.push(`/admin/products/edit?slug=${parfume.slug}`)}>Güncelle/Detay</Button>
+                            <Button variant="danger" onClick={()=>deleteButtonHandler(c._id)}>Sil</Button>
                         </Column>
                     </Row>
                 ))
@@ -62,4 +60,4 @@ const AdminProducts = () => {
     );
 }
 
-export default AdminProducts;
+export default AdminCampaigns;

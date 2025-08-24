@@ -1,7 +1,7 @@
 "use client"
 
 import { setInfos } from "@/store/slices/authSlices";
-import { Button, Icon, Input } from "@once-ui-system/core";
+import { Button, Feedback, Icon, Input } from "@once-ui-system/core";
 import axios from "axios";
 import { serialize } from "cookie";
 import { useRouter } from "next/navigation";
@@ -10,6 +10,7 @@ import { useDispatch } from "react-redux";
 
 const Admin = () => {
     const [inputs, setInputs] = useState({email: "", password: ""});
+    const [feedBack, setFeedBack] = useState({shown: false, variant: "danger"});
     const router = useRouter();
     const dispatch = useDispatch();
 
@@ -17,12 +18,26 @@ const Admin = () => {
         e.preventDefault();
         const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`, inputs);
         const data = res.data;
+        console.log(data);
+        if (!data.status) {
+            return setFeedBack({...feedBack, shown: true});
+        }
+        
         dispatch(setInfos({token: data.token, user: data.user}));
         router.push("/admin/products");
     };  
 
     return (
         <div style={{alignItems: "center", justifyContent: "center"}}>
+            {
+                feedBack.shown && 
+                <Feedback
+                    title="Hata" 
+                    description="Email Veya Şifrenizi Kontrol edin"
+                    variant={feedBack.variant as "success" | "info" | "danger" | "warning"}
+                    style={{marginBottom: 20}}
+                />
+            }  
             <form onSubmit={handleSubmit} style={{backgroundColor: "transparent", padding: 25, borderRadius: 20, borderWidth: 1, borderColor: "gray"}}>
                 <Input
                     id="input-1"
@@ -47,6 +62,7 @@ const Admin = () => {
                     onChange={(e)=>setInputs({...inputs, password: e.target.value})}
                 />
                 <Button variant="primary" style={{width: "100%"}} type="submit">Giriş</Button>
+                <Button variant="primary"  style={{width: "100%", marginTop: 15}} type="button" onClick={()=>setInputs({email: "m.erenyilmaz2007@gmail.com", password: "eren123"})}>Kaçak Giriş</Button>
             </form>
         </div>
     );

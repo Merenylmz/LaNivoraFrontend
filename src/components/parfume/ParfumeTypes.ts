@@ -12,6 +12,7 @@ type ParfumeTypes = {
     star?: Boolean,
     slug: String,
     campaignId: {
+        _id: String,
         description: String,
         discount: Number
     }
