@@ -1,5 +1,5 @@
 const person = {
-  firstName: "LaNivora",
+  firstName: "La Nivora",
   lastName: "",
   get name() {
     return `${this.firstName} ${this.lastName}`;
@@ -89,23 +89,26 @@ const about = {
   },
   work: {
     display: true,
-    title: "İş Deneyimleri",
+    title: "Koku Notalarımız",
     experiences: [
       {
-        company: "Web Geliştirme",
+        company: "La Nivora",
         timeframe: "Günümüz",
-        role: "Geliştirme",
+        role: "Parfüm",
         achievements: [
           <>
-            Dijital varlığınızı güçlendirmek için, işletmenizin ihtiyaçlarına özel, modern ve etkileşimli web geliştirme çözümleri sunuyoruz
+            Üst Nota: Bergamot, Limon, Nane
           </>,
           <>
-            İşletmenizin dijital hedeflerine ulaşması için kapsamlı web geliştirme ve gelecekteki mobil uygulama ve yapay zeka çözümlerimizle yanınızdayız.
+            Orta Nota: Lavanta, Yasemin
+          </>,
+          <>
+            Alt Nota: Sedir Ağacı, Amber, Misk
           </>,
         ],
         images: [
           {
-            src: "/images/projects/project-01/cover-01.jpg",
+            src: "/images/projects/project-01/parfume1.png",
             alt: "Once UI Project",
             width: 16,
             height: 9,
@@ -130,20 +133,22 @@ const about = {
   },
   technical: {
     display: true,
-    title: "Kullanılan Teknolojiler",
+    title: "Parfüm Hakkında Genel Bilgiler",
     skills: [
       {
-        title: "Node.js / Express.js",
-        description: <>Backend tarafında kullanmış olduğumuz teknolojilerimiz</>,
+        title: "Parfüm Türü",
+        description: <>Eau de Parfum (EDP)
+          Kalıcılığı yüksek, yoğun koku profili.
+        </>,
         images: [
           {
-            src: "/images/projects/project-01/cover-02.jpg",
+            src: "/images/projects/project-01/parfume2.png",
             alt: "Project image",
             width: 16,
             height: 9,
           },
           {
-            src: "/images/projects/project-01/cover-03.jpg",
+            src: "/images/projects/project-01/parfume3.png",
             alt: "Project image",
             width: 16,
             height: 9,
@@ -151,11 +156,13 @@ const about = {
         ],
       },
       {
-        title: "Next.js / Next UI",
-        description: <>Frontend tarafında kullanmış olduğumuz teknolojimiz</>,
+        title: "Kullanım Zamanı",
+        description: <>Kullanım Zamanı: Gündüz & Gece
+          Çok yönlü kullanım için ideal.
+        </>,
         images: [
           {
-            src: "/images/projects/project-01/cover-04.jpg",
+            src: "/images/projects/project-01/parfume4.png",
             alt: "Project image",
             width: 16,
             height: 9,
@@ -163,15 +170,9 @@ const about = {
         ],
       },
       {
-        title: "Laravel",
-        description: <>Backend tarafında kullanmış olduğumuz teknolojilerimiz</>,
+        title: "Ten Uyumu",
+        description: <>Ten Uyumu: Kuru ve normal ciltler için önerilir.</>,
         images: [
-          {
-            src: "/images/projects/project-01/cover-04.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
         ],
       },
     ],

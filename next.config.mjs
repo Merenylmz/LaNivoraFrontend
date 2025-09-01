@@ -14,8 +14,25 @@ const nextConfig = {
     silenceDeprecations: ["legacy-js-api"],
   },
   images: {
-    domains: ['localhost'],
-  },
+    remotePatterns: [
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+        pathname: '/**'
+      },
+      {
+        protocol: 'http',
+        hostname: 'lanivora.net',
+        pathname: '/**'
+      },
+      {
+        protocol: 'https',
+        hostname: 'lanivora.net',
+        pathname: '/**'
+      },
+    ]
+  }
+
 
 };
 
