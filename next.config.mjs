@@ -30,6 +30,16 @@ const nextConfig = {
         hostname: 'lanivora.net',
         pathname: '/**'
       },
+      {
+        protocol: 'https',
+        hostname: 'lanivorabackend.onrender.com',
+        pathname: '/**'
+      },
+      {
+        protocol: 'http',
+        hostname: 'lanivorabackend.onrender.com',
+        pathname: '/**'
+      },
     ]
   }
 
