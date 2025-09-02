@@ -39,6 +39,16 @@ const social = [
     icon: "email",
     link: `mailto:${person.email}`,
   },
+  {
+    name: "Tiktok",
+    icon: "tiktok",
+    link: `https://www.tiktok.com/@lanivora?_t=ZS-8zOdmVdIm3R&_r=1`,
+  },
+  {
+    name: "Youtube",
+    icon: "youtube",
+    link: `https://www.youtube.com/@lanivora`,
+  },
 ];
 
 const home = {
