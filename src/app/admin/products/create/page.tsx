@@ -25,6 +25,7 @@ const AdminProductCreate = () => {
   };
   const router = useRouter();
   const [campaigns, setCampaigns] = useState<Array<CampaignType>>();
+  const [isLoading, setIsLoading] = useState(false);
   const [inputs, setInputs] = useState({
     title: "",
     description: "",
@@ -42,6 +43,7 @@ const AdminProductCreate = () => {
 
   const handleSubmit = async(e: FormEvent) => {
     e.preventDefault();
+    setIsLoading(true);
     try {
       const formData = new FormData();
       formData.append("title", inputs.title);
@@ -57,7 +59,6 @@ const AdminProductCreate = () => {
       inputs.images.forEach((file) => {
         formData.append("images", file); 
       });
-      console.log(inputs);
       
 
       const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/parfumes/add?token=${userInfo.token}`, formData, {
@@ -66,11 +67,12 @@ const AdminProductCreate = () => {
         },
       });
       const data = res.data;
-      console.log(data);
 
       if (!data) {
         return alert("Ekleme İşlemi Başarısız");
       }
+      setIsLoading(false);
+
       return router.push("/admin/products");
     } catch (error) {
       console.log(error);
@@ -286,8 +288,12 @@ const AdminProductCreate = () => {
             </Column>
 
             <Row style={{ justifyContent: "flex-end", marginTop: 24 }}>
-              <Button variant="primary" type="submit">
-                Ekle
+              <Button variant="primary" type="submit" disabled={isLoading}>
+                {
+                  isLoading ? 
+                  <Icon name="clock"/> : 
+                  <div>Ekle</div>
+                }
               </Button>
               <Button variant="primary" type="button" style={{marginLeft: 10}} onClick={()=>router.push("/admin/products")}>
                 Geri Dön

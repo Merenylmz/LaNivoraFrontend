@@ -127,7 +127,7 @@ const Details = () => {
                   <Text>Açıklama: {detail.campaignId.description}</Text>
                   <Text>İndirim Miktarı: {detail.campaignId.discount as ReactNode} ₺</Text>
                   <Text>
-                    Kampanya Dahil Fiyat: {(detail.price as number) - (detail.campaignId.discount as number)} ₺
+                    Kampanya Dahil Fiyat: {((detail.price as number) - (detail.campaignId.discount as number)) > 0 && (detail.price as number) - (detail.campaignId.discount as number)} ₺
                   </Text>
                 </Column>
               )}

@@ -19,6 +19,7 @@ const AdminCampaignsCreate = () => {
         token: string;
     };
     const router = useRouter();
+    const [isLoading, setIsLoading] = useState(false);
     const [inputs, setInputs] = useState({
         description: "",
         discount: "",
@@ -27,6 +28,7 @@ const AdminCampaignsCreate = () => {
 
   const handleSubmit = async(e: FormEvent) => {
     e.preventDefault();
+    setIsLoading(true);
     try {
 
       const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/campaign/add?token=${userInfo.token}`, inputs);
@@ -35,6 +37,7 @@ const AdminCampaignsCreate = () => {
       if (!data) {
         return alert("Ekleme İşlemi Başarısız");
       }
+      setIsLoading(false);
       return router.push("/admin/campaigns");
     } catch (error) {
       console.log(error);
@@ -87,10 +90,14 @@ const AdminCampaignsCreate = () => {
         </Column>
 
         <Row style={{ justifyContent: "flex-end", marginTop: 24 }}>
-          <Button variant="primary" type="submit">
-            Ekle
+          <Button variant="primary" type="submit" disabled={isLoading}>
+            {
+              isLoading ? 
+              <Icon name="clock"/> : 
+              <div>Ekle</div>
+            }
           </Button>
-          <Button variant="primary" type="button" style={{marginLeft: 10}} onClick={()=>router.push("/admin/campaigns")}>
+          <Button variant="primary" type="button" style={{marginLeft: 10}} onClick={()=>router.push("/admin/products")}>
             Geri Dön
           </Button>
         </Row>
