@@ -24,7 +24,7 @@ export function Projects2({ range }: ProjectsProps) {
         priority={1 < 2}
         key={"deneme"}
         href={`work/deneme`}
-        images={["/images/projects/project-01/parfume1.png", "/images/projects/project-01/parfume2.png","/images/projects/project-01/parfume3.png" ,"/images/projects/project-01/parfume4.png"]}
+        images={["/images/projects/project-01/parfume1.png", "/images/projects/project-01/slider1.jpg", "/images/projects/project-01/slider2.jpg","/images/projects/project-01/slider3.jpg"]}
         title={`Zamansız Elegansın Kokusu ile Fark Yaratın`}
         description={"Parfüm sadece bir koku değil, bir yaşam tarzıdır. Lanivora ile tarzınızı en iyi şekilde yansıtın. Her zevke uygun, geniş bir parfüm yelpazesi sizi bekliyor. İmza kokunuzu bulmak için koleksiyonumuza göz atın. Klasikten vazgeçmeyenler için... Her döneme damgasını vuran, ikonikleşmiş parfümlerle tanışın."}
         content={"Parfüm sadece bir koku değil, bir yaşam tarzıdır. Lanivora ile tarzınızı en iyi şekilde yansıtın. Her zevke uygun, geniş bir parfüm yelpazesi sizi bekliyor. İmza kokunuzu bulmak için koleksiyonumuza göz atın. Klasikten vazgeçmeyenler için... Her döneme damgasını vuran, ikonikleşmiş parfümlerle tanışın."}

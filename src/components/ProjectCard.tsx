@@ -17,12 +17,18 @@ import ParfumeTypes from "./parfume/ParfumeTypes";
 interface ProjectCardProps {
   data: ParfumeTypes
 }
+export function truncate(text: string, maxLength: number) {
+  return text.length > maxLength
+    ? text.slice(0, maxLength) + "..."
+    : text;
+}
+
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({
   data 
 }) => {
   return (
-    <div style={{ width: "100%", height: "100%" }}>
+    <div style={{ width: "100%", height: "550px" }}>
       <SmartLink href={`/details?slug=${data.slug}`} style={{ width: "100%", height: "100%" }}>
       <Card
         radius="l-4"
@@ -31,7 +37,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
         style={{ minHeight: 550, display: "flex", flexDirection: "column", width: "100%" }}
       >
         <Row fillWidth paddingX="20" paddingY="12" gap="8" vertical="center">
-          <Avatar size="xs" src="/images/avatar.jpg" />
+          <Avatar size="xs" src="/images/lanivoraLogo.jpg" />
           <Text variant="label-default-s">LaNivora</Text>
         </Row>
 
@@ -48,7 +54,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
         <Column fillWidth paddingX="20" paddingY="24" gap="8" style={{ flex: 1 }}>
           <Text variant="body-default-xl" style={{ lineClamp: 2 }}>{data.title}</Text>
           <Text onBackground="neutral-weak" variant="body-default-s" style={{ lineClamp: 3 }}>
-            {data.description}
+            {truncate(data.description as string, 220)}
           </Text>
         </Column>
 

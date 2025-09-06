@@ -18,7 +18,6 @@ const Admin = () => {
         e.preventDefault();
         const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`, inputs);
         const data = res.data;
-        console.log(data);
         if (!data.status) {
             return setFeedBack({...feedBack, shown: true});
         }
