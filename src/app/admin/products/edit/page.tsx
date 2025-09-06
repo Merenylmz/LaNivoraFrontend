@@ -63,6 +63,11 @@ const AdminProductEdit = () => {
           formData.append("images", file); 
         });
       } 
+      if (inputs.campaign != "") {
+        if (inputs.campaign != "-1" && inputs.campaign != null) {
+          formData.append("campaignId", inputs.campaign);
+        } 
+      }
       const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/parfumes/edit/${slug}?token=${userInfo.token}`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
