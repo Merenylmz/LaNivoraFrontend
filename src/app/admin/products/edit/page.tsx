@@ -57,7 +57,6 @@ const AdminProductEdit = () => {
       formData.append("star", inputs.isFeatured ? "1": "0");
       formData.append("fragranceNotes", inputs.notes);
       formData.append("slug", inputs.slug);
-      formData.append("campaignId", inputs.campaign);
       if (inputs.images[0]) {
         inputs.images.forEach((file) => {
           formData.append("images", file); 
@@ -286,7 +285,7 @@ const AdminProductEdit = () => {
             description="Ürüne Kampanya Eklemek isterseniz seçebilirsiniz"
             value={inputs.campaign}
             options={[
-              { label: "Seçim Yapınız", value: "0" },
+              { label: "Seçim Yapınız", value: "-1" },
               ...campaigns.map((c) => ({
                 label: c.description,
                 value: c._id as string, 

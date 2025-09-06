@@ -281,7 +281,6 @@ const AdminProductCreate = () => {
                 value={inputs.campaign}
                 options={[
                   { label: "Seçim Yapınız", value: "-1" },
-                  { label: "Seçim Yapınaaaız", value: "15" },
                   ...campaigns.map((c) => ({
                     label: c.description,
                     value: c._id as string, 
