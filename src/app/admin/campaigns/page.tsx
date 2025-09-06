@@ -28,8 +28,6 @@ const AdminCampaigns = () => {
         status ? setFeedBack({shown: true, variant: "success"}) : setFeedBack({shown: false, variant: "danger"});
     };
 
-    console.log(userInfo);
-    
     return (
         <AdminGuard>
             <div>

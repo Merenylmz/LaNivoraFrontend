@@ -58,10 +58,11 @@ const AdminProductCreate = () => {
       inputs.images.forEach((file) => {
         formData.append("images", file); 
       });
-      if (inputs.campaign != "0" || inputs.campaign) {
-        formData.append("campaignId", inputs.campaign);
+      if (inputs.campaign != "") {
+        if (inputs.campaign != "-1" && inputs.campaign != null) {
+          formData.append("campaignId", inputs.campaign);
+        } 
       }
-      
       
       const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/parfumes/add?token=${userInfo.token}`, formData, {
         headers: {
@@ -279,7 +280,8 @@ const AdminProductCreate = () => {
                 description="Ürüne Kampanya Eklemek isterseniz seçebilirsiniz"
                 value={inputs.campaign}
                 options={[
-                  { label: "Seçim Yapınız", value: "0" },
+                  { label: "Seçim Yapınız", value: "-1" },
+                  { label: "Seçim Yapınaaaız", value: "15" },
                   ...campaigns.map((c) => ({
                     label: c.description,
                     value: c._id as string, 
