@@ -117,12 +117,12 @@ const about = {
           </>,
         ],
         images: [
-          {
-            src: "/images/projects/project-01/parfume1.png",
-            alt: "Once UI Project",
-            width: 16,
-            height: 9,
-          },
+          // {
+          //   src: "/images/projects/project-01/parfume1.png",
+          //   alt: "Once UI Project",
+          //   width: 16,
+          //   height: 9,
+          // },
         ],
       },
     ],
@@ -151,18 +151,18 @@ const about = {
           Kalıcılığı yüksek, yoğun koku profili.
         </>,
         images: [
-          {
-            src: "/images/projects/project-01/parfume2.png",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-          {
-            src: "/images/projects/project-01/parfume3.png",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
+          // {
+          //   src: "/images/projects/project-01/parfume2.png",
+          //   alt: "Project image",
+          //   width: 16,
+          //   height: 9,
+          // },
+          // {
+          //   src: "/images/projects/project-01/parfume3.png",
+          //   alt: "Project image",
+          //   width: 16,
+          //   height: 9,
+          // },
         ],
       },
       {
@@ -171,12 +171,12 @@ const about = {
           Çok yönlü kullanım için ideal.
         </>,
         images: [
-          {
-            src: "/images/projects/project-01/parfume4.png",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
+          // {
+          //   src: "/images/projects/project-01/parfume4.png",
+          //   alt: "Project image",
+          //   width: 16,
+          //   height: 9,
+          // },
         ],
       },
       {
