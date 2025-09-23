@@ -19,6 +19,8 @@ import {
   Text,
 } from "@once-ui-system/core";
 import { ScrollToHash } from "@/components";
+import getTextWithGenderId from "@/components/other/other";
+
 
 const Details = () => {
   const searchParams = useSearchParams();
@@ -145,6 +147,12 @@ const Details = () => {
               {detail.fragranceNotes && (
                 <Text>
                   <strong>Koku Tonları:</strong> {detail.fragranceNotes}
+                </Text>
+              )}
+
+              {(
+                <Text>
+                  <strong>Cinsiyet:</strong> {getTextWithGenderId(detail.gender as string)}
                 </Text>
               )}
             </Column>

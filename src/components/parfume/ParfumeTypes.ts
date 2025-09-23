@@ -15,7 +15,8 @@ type ParfumeTypes = {
         _id: String,
         description: String,
         discount: Number
-    }
+    },
+    gender?: String
 }
 
 export default ParfumeTypes;

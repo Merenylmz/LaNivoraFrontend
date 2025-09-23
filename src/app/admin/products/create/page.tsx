@@ -37,7 +37,8 @@ const AdminProductCreate = () => {
     campaign: "",
     isActive: false,
     isFeatured: false,
-    images: []
+    images: [],
+    gender: ""
   });
 
 
@@ -63,8 +64,12 @@ const AdminProductCreate = () => {
           formData.append("campaignId", inputs.campaign);
         } 
       }
-      
-      const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/parfumes/add?token=${userInfo.token}`, formData, {
+      if (inputs.gender != "") {
+        if (inputs.gender != "-1" && inputs.gender != null) {
+          formData.append("gender", inputs.gender);
+        } 
+      }
+      const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/parfumes/add?token=${userInfo.token}`, Object.fromEntries(formData.entries()), {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -290,6 +295,22 @@ const AdminProductCreate = () => {
                 onSelect={(val) => setInputs({ ...inputs, campaign: val })}
               />
             }
+            </Column>
+
+            <Column fillWidth>
+              <Select
+                id="asds"
+                label="Cinsiyet"
+                description="Cinsiyet Bilgisi için seçim yapınız"
+                value={inputs.gender}
+                options={[
+                  { label: "Seçim Yapınız", value: "-1" },
+                  { label: "Erkek", value: "0" },
+                  { label: "Kadın", value: "1" },
+                  { label: "Tümü", value: "2" }
+                ]}
+                onSelect={(val) => setInputs({ ...inputs, gender: val })}
+              />
             </Column>
 
             <Row style={{ justifyContent: "flex-end", marginTop: 24 }}>

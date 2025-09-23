@@ -88,7 +88,7 @@ export default function Home() {
           </Flex>
         </Flex>
       )}
-      <Projects range={true} />
+      <Projects range={true} gender={"2"}/>
       {/* {newsletter.display && <Mailchimp newsletter={newsletter} />} */}
     </Column>
   );

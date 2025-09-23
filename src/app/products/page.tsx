@@ -1,6 +1,7 @@
 import { Column, Meta, Schema, Text } from "@once-ui-system/core";
 import { baseURL, about, person, work } from "@/resources";
 import { Projects } from "@/components/work/Projects";
+import ForCategorySystem from "@/components/work/ForCategorySystem";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -31,8 +32,8 @@ export default function Work() {
       <Text variant="body-strong-xl" style={{textAlign: "center", marginBottom: "20px", marginTop: "20px"}}>
         Ürünlerimiz
       </Text>
-
-      <Projects range={false}/>
+      <ForCategorySystem />
+      {/* <Projects range={false} gender={0}/> */}
     </Column>
   );
 }

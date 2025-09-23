@@ -13,6 +13,7 @@ import {
 } from "@once-ui-system/core";
 import Link from "next/link";
 import ParfumeTypes from "./parfume/ParfumeTypes";
+import getTextWithGenderId from "./other/other";
 
 interface ProjectCardProps {
   data: ParfumeTypes
@@ -27,6 +28,7 @@ export function truncate(text: string, maxLength: number) {
 export const ProjectCard: React.FC<ProjectCardProps> = ({
   data 
 }) => {
+
   return (
     <div style={{ width: "100%", height: "550px" }}>
       <SmartLink href={`/details?slug=${data.slug}`} style={{ width: "100%", height: "100%" }}>
@@ -68,10 +70,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
           textVariant="label-default-s"
           onBackground="neutral-medium"
           >
-          <Icon name="like" size="s" onBackground="neutral-strong" />
-          La
-          <Icon name="chat" size="s" onBackground="neutral-strong" marginLeft="24" />
-          Nivora
+          Cinsiyet: {getTextWithGenderId(data.gender as string)}
         </Row>
       </Card>
       </SmartLink>

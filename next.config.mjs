@@ -40,6 +40,11 @@ const nextConfig = {
         hostname: 'lanivorabackend.onrender.com',
         pathname: '/**'
       },
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+        pathname: '/**'
+      },
     ]
   }
 

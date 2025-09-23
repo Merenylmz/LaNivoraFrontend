@@ -39,7 +39,8 @@ const AdminProductEdit = () => {
     campaign: "",
     isActive: false,
     isFeatured: false,
-    images: []
+    images: [],
+    gender: ""
   });
 
 
@@ -65,6 +66,11 @@ const AdminProductEdit = () => {
       if (inputs.campaign != "") {
         if (inputs.campaign != "-1" && inputs.campaign != null) {
           formData.append("campaignId", inputs.campaign);
+        } 
+      }
+      if (inputs.gender != "") {
+        if (inputs.gender != "-1" && inputs.gender != null) {
+          formData.append("gender", inputs.gender);
         } 
       }
       const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/parfumes/edit/${slug}?token=${userInfo.token}`, formData, {
@@ -101,7 +107,8 @@ const AdminProductEdit = () => {
             campaign: parfume.campaignId?._id as string || "", // kampanya ID'si
             isActive: parfume.isActive as boolean || false,
             isFeatured: parfume.star as boolean || false,
-            images: parfume.images as [], // edit modunda dosya input boş başlar
+            images: parfume.images as [], // edit modunda dosya input boş başlar,
+            gender: parfume.gender as string || ""
         });
     })()
   }, [slug]);
@@ -295,6 +302,22 @@ const AdminProductEdit = () => {
             onSelect={(val) => setInputs({ ...inputs, campaign: val })}
           />
         }
+        </Column>
+
+        <Column fillWidth>
+          <Select
+            id="asds"
+            label="Cinsiyet"
+            description="Cinsiyet Bilgisi için seçim yapınız"
+            value={inputs.gender}
+            options={[
+              { label: "Seçim Yapınız", value: "-1" },
+              { label: "Erkek", value: "0" },
+              { label: "Kadın", value: "1" },
+              { label: "Tümü", value: "2" }
+            ]}
+            onSelect={(val) => setInputs({ ...inputs, gender: val })}
+          />
         </Column>
 
         <Row style={{ justifyContent: "flex-end", marginTop: 24 }}>
